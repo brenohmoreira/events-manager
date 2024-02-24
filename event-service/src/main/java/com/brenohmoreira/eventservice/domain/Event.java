@@ -1,5 +1,6 @@
 package com.brenohmoreira.eventservice.domain;
 
+import com.brenohmoreira.eventservice.dtos.EventRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,4 +19,13 @@ public class Event {
     private String title;
     private String description;
     private int maxParticipants;
+    private int registeredParticipants;
+
+    public Event(EventRequestDTO eventRequestDTO) {
+        this.date = eventRequestDTO.date();
+        this.maxParticipants = eventRequestDTO.maxParticipants();
+        this.title = eventRequestDTO.title();
+        this.description = eventRequestDTO.description();
+        this.registeredParticipants = eventRequestDTO.registeredParticipants();
+    }
 }
